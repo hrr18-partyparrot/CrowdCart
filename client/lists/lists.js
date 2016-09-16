@@ -1,6 +1,6 @@
 angular.module("crowdcart.lists", ["angularMoment"])
 
-.controller("ListsController", function ($scope, Lists, $window, $location, $rootScope, $routeParams) {
+.controller("ListsController", function ($scope, Lists, $window, $location, $rootScope, $routeParams, $http) {
 
   // storage objs
   $scope.data = {};
@@ -81,6 +81,14 @@ angular.module("crowdcart.lists", ["angularMoment"])
       .catch(function (error) {
         console.log(error);
       });
+  };
+
+  //searches Walmart's API
+  $scope.searchItem = function() {
+    Lists.searchWalmart()
+      .then(function(results) {
+        console.log('walmart results', results);
+      })
   };
 
   // delete list

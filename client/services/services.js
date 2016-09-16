@@ -57,7 +57,7 @@ angular.module("crowdcart.services",[])
 
 })
 
-.factory("Lists", function($http) {
+.factory("Lists", function($http, $resource) {
 
   // get all lists for specific user; since with routing to decide if that's the right meaning
   var getLists = function (id) {
@@ -133,6 +133,27 @@ angular.module("crowdcart.services",[])
     })
   }
 
+  var searchWalmart = function () {
+    var urlSearchProductApi = 'http://api.walmartlabs.com/v1/search';
+    var keyApi = 'fahcgpfschk77ywg9ej8ukfy';
+    console.log('attepmint to contact walmart');
+    var searchRequest = $resource(urlSearchProductApi, {
+        callback: "JSON_CALLBACK"
+      },{
+          get: {
+            method: "JSONP"
+          }
+        });
+    console.log('after first resource');
+    var tempResults = searchRequest.get({apiKey: keyApi, query: 'apple'});
+
+    console.log('tempResults', tempResults);
+    // return $http({
+    //   method: 'GET',
+    //   url: 'http://api.walmartlabs.com/v1/search?query=apple&format=json&callback=JSON_CALLBACK&apiKey=fahcgpfschk77ywg9ej8ukfy'
+    // })
+  };
+
   return {
     getLists: getLists,
     getAllList: getAllList,
@@ -141,7 +162,8 @@ angular.module("crowdcart.services",[])
     updateStatus: updateStatus,
     newList: newList,
     updateList: updateList,
-    deleteList: deleteList
+    deleteList: deleteList,
+    searchWalmart: searchWalmart
   }
 
 })
