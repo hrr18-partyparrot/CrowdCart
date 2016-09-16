@@ -1,13 +1,30 @@
-html {
-  background-image: url(assets/crowdcartbgi.jpg);
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Microsoft JhengHei UI Light';
+  letter-spacing: 1px;
+  font-size: 16px;
+  padding-bottom: 20px
 }
 
+.main-banner {
+  background-image: url(groceryshopping.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 30px 50px;
+  height: 750px;
+}
 
-body {
-  margin-left: 17%;
-  margin-right: 17%;
-  margin-top: 1%;
-  opacity: 0.95;
+.navbar {
+  margin: 0;
+  padding-top: 10px;
+  padding-bottom:10px;
+}
+
+.logo {
+  position: relative;
+  top: -14px;
 }
 
 .items, .delivery-address {
@@ -54,4 +71,12 @@ body {
 #map_canvas {
   height: 500px;
   width: 100%;
+}
+
+.icon-bar {
+  background-color: #bbb;
+}
+
+.information {
+  margin-top: 100px
 }

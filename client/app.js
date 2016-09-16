@@ -57,7 +57,7 @@ angular.module("crowdcart", [
       authenticate: true
     })
     .otherwise({
-      redirectTo: "/mylists"
+      redirectTo: "/signup"
     });
 
     $httpProvider.interceptors.push('AttachTokens');

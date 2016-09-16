@@ -1,21 +1,69 @@
-<!-- sing up page/box -->
-
-<div class="signup-outer">
-  <div class="signup-inner">
-    <form name="signup-form" ng-submit="signup()">
-      <div class="signup-field"><input type="text" ng-model="user.username" placeholder="Username"></div>
-      <div class="signup-field"><input type="email" ng-model="user.email" placeholder="Email"></div>
-      <div class="signup-field"><input type="text" ng-model="user.name.first" placeholder="First Name"></div>
-      <div class="signup-field"><input type="text" ng-model="user.name.last" placeholder="Last Name"></div>
-      <div class="signup-field"><input type="password" ng-model="user.password" placeholder="Password"></div>
-      <div class="signup-field"><input type="text" ng-model="user.address.street" placeholder="Street Address"></div>
-      <div class="signup-field"><input type="text" ng-model="user.address.city" placeholder="City"></div>
-      <div class="signup-field"><input type="text" ng-model="user.address.state" placeholder="State"></div>
-      <div class="signup-field"><input type="number" ng-model="user.address.zip_code" placeholder="ZIP"></div>
-      <button>Sign Up</button>
+<!-- Sign Up Page -->
+<div class="main-banner">
+  <div class="row">
+    <div class="col-md-6" style="color:#fff" >
+      <h1>Crowd Cart</h1>
+      <p class="lead">Grocery List? Chuck to crowd! Crowdsourcing at its finest.</p>
+      <hr class="m-y-2">
+      <p class="lead">
+      <div class="delivery-address">
+        <p>Tired of doing the groceries? Share your grocery list with our community called "The Crowd".</p>
+        <p>Want to earn some extra cash? Join the crowd and take up any grocery list as a job you can fulfill.</p>
+        <hr />
+        <p>CrowdCart was taken over in  2016 by a group of HackReactor Alumni:</p>
+        <p>Yasser Mahmud, John Smalley, Tyler Predale, Hoon Bae and Ryan Busby.</p>
+      </div>
+      </p>
+    </div>
+    <div style="margin-top:30px"></div>
+    <div class="col-md-4 col-md-offset-2 col-sm-10 col-sm-offset-1" style="background-color:#f9f9f9; padding:0; text-align:center" ng-if="!hasSession">
+    <div style="padding-top:5px;" class="visible-sm visible-xs" ng-if="!hasSession"></div>
+    <h3 ng-if="!hasSession">Sign Up</h3>
+    <hr ng-if="!hasSession">
+    <form name="signup-form" ng-submit="signup()" style="margin-top:20px" ng-if="!hasSession">
+      <div class="form-group">
+        <input type="text" ng-model="user.name.first" style="display:block; width:90%; border: 1px solid #ddd; outline:none; padding:7px; margin:0 auto;" placeholder="First Name.." required="true">
+      </div>
+      <div class="form-group">
+        <input type="text" ng-model="user.name.last" style="display:block; width:90%; border: 1px solid #ddd; outline:none; padding:7px; margin:0 auto;" placeholder="Last Name.." required="true">
+      </div>
+      <div class="form-group">
+        <input type="email" ng-model="user.email" style="display:block; width:90%; border: 1px solid #ddd; outline:none; padding:7px; margin:0 auto;" placeholder="Email.." required="true">
+      </div>
+      <div class="form-group">
+        <input type="password" ng-model="user.password" style="display:block; width:90%; border: 1px solid #ddd; outline:none; padding:7px; margin:0 auto;" placeholder="Password.." required="true">
+      </div>
+      <div class="form-group">
+        <input type="text" ng-model="user.address.street" style="display:block; width:90%; border: 1px solid #ddd; outline:none; padding:7px; margin:0 auto;" placeholder="Street Address..">
+      </div>
+      <div class="form-group">
+        <input type="text" ng-model="user.address.city" style="display:block; width:90%; border: 1px solid #ddd; outline:none; padding:7px; margin:0 auto;" placeholder="City..">
+      </div>
+      <div class="form-group">
+        <input type="text" ng-model="user.address.state" style="display:block; width:90%; border: 1px solid #ddd; outline:none; padding:7px; margin:0 auto;" placeholder="State..">
+      </div>
+      <div class="form-group">
+        <input type="number" ng-model="user.address.zip_code" style="display:block; width:90%; border: 1px solid #ddd; outline:none; padding:7px; margin:0 auto;" placeholder="ZIP">
+      </div>
+      <button style="margin-top:5px; width:100%; border:none; outline:none; padding:16px; background-color:#e6ffcc;font-size:20px" type="submit">Submit</button>
+      <div style="margin-top:15px;"><a href="#/signup">Don't have an account? <strong>Signup</strong>...</a></div>
     </form>
-    <div>
-      <a href="#/signin" style="color: white">Already have an account? <strong>Signin</strong>...</a>
+  </div>
+</div>
+
+<div class=" information" >
+  <div class="row" ng-if="!hasSession">
+    <div class="col-md-2 col-md-offset-2"><img src="https://d1a3f4spazzrp4.cloudfront.net/web-p2/images/signup/join/money.83b3eb31be66da3ae5b329dc90ef2aa0.png" class="img-responsive" style="margin-top:10px"></div>
+    <div class="col-md-5" style="text-align:center">
+      <h3>Money is easy</h3>
+      <p>Got time? Turn it into a money. Crowd Cart makes it easy for you to cash in on the action. Plus, you've already got everything you need to get started.</p>
+    </div>
+  </div>
+  <div class="row"  ng-if="!hasSession">
+    <div class="col-md-2 col-md-offset-2"><img src="https://d1a3f4spazzrp4.cloudfront.net/web-p2/images/signup/join/time.0574602f784f618211f22967743131e8.png" class="img-responsive" style="margin-top:10px"></div>
+    <div class="col-md-5" style="text-align:center">
+      <h3>Order when you want</h3>
+      <p>Need something ?  Don't have time or time is expensive  Let someone pick it up for you You name the item and the price you want it at</p>
     </div>
   </div>
 </div>
