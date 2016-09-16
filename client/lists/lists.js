@@ -1,6 +1,6 @@
 angular.module("crowdcart.lists", ["angularMoment"])
 
-.controller("ListsController", function ($scope, Lists, $window, $location, $rootScope, $routeParams) {
+.controller("ListsController", function ($scope, Lists, $window, $location, $rootScope, $routeParams, $http, $resource) {
 
   // storage objs
   $scope.data = {};
@@ -14,6 +14,9 @@ angular.module("crowdcart.lists", ["angularMoment"])
   $scope.state = $window.localStorage.getItem('crowdcartuserstate');
   $scope.city = $window.localStorage.getItem('crowdcartusercity');
   $scope.zip = $window.localStorage.getItem('crowdcartuserzip');
+
+  // default value for quantity of items
+  $scope.quantity = 1;
 
   var initialize = function () {
 
@@ -81,6 +84,27 @@ angular.module("crowdcart.lists", ["angularMoment"])
       .catch(function (error) {
         console.log(error);
       });
+  };
+
+  //searches Walmart's API
+  $scope.searchItem = function() {
+    var urlSearchProductApi = 'http://api.walmartlabs.com/v1/search';
+    var keyApi = 'fahcgpfschk77ywg9ej8ukfy';
+    var searchRequest = $resource(urlSearchProductApi, {
+        callback: "JSON_CALLBACK"
+      },{
+          get: {
+            method: "JSONP"
+          }
+        });
+    searchRequest.get({apiKey: keyApi, query: $scope.itemSearch}, function(response) {
+      $scope.walmartItems = response.items;
+    });
+  };
+
+  // test for Walmart item clicked
+  $scope.clickedWalmartItem = function(part) {
+    console.log('item clicked ', part);
   };
 
   // delete list
