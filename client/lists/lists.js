@@ -96,8 +96,9 @@ angular.module("crowdcart.lists", ["angularMoment"])
           }
         });
     console.log('after first resource');
-    searchRequest.get({apiKey: keyApi, query: $scope.itemSearch}, function(items) {
-      console.log('callback walmart: ', items.items);
+    searchRequest.get({apiKey: keyApi, query: $scope.itemSearch}, function(response) {
+      console.log('callback walmart: ', response.items);
+      $scope.walmartItems = response.items;
     });
   };
 
