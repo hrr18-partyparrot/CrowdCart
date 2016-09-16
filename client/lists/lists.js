@@ -85,10 +85,10 @@ angular.module("crowdcart.lists", ["angularMoment"])
 
   //searches Walmart's API
   $scope.searchItem = function() {
-    Lists.searchWalmart()
-      .then(function(results) {
-        console.log('walmart results', results);
-      })
+    console.log(Lists.searchWalmart($scope.itemSearch));
+      // .then(function(results) {
+      //   console.log('walmart results', results);
+      // })
   };
 
   // delete list

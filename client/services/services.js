@@ -133,7 +133,8 @@ angular.module("crowdcart.services",[])
     })
   }
 
-  var searchWalmart = function () {
+  // Used to search walmartpull data from Walmart
+  var searchWalmart = function (item) {
     var urlSearchProductApi = 'http://api.walmartlabs.com/v1/search';
     var keyApi = 'fahcgpfschk77ywg9ej8ukfy';
     console.log('attepmint to contact walmart');
@@ -145,9 +146,10 @@ angular.module("crowdcart.services",[])
           }
         });
     console.log('after first resource');
-    var tempResults = searchRequest.get({apiKey: keyApi, query: 'apple'});
+    var tempResults = searchRequest.get({apiKey: keyApi, query: item});
 
     console.log('tempResults', tempResults);
+    return tempResults;
     // return $http({
     //   method: 'GET',
     //   url: 'http://api.walmartlabs.com/v1/search?query=apple&format=json&callback=JSON_CALLBACK&apiKey=fahcgpfschk77ywg9ej8ukfy'
