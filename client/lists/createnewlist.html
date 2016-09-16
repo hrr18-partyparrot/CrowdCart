@@ -90,6 +90,7 @@
       <table class="table table-hover">
         <thead>
           <tr>
+            <th>Picture</th>
             <th>Item Name</th>
             <th>Quantity</th>
             <th>Unit Price</th>
@@ -98,6 +99,7 @@
         </thead>
         <tbody>
           <tr ng-repeat="i in list.items">
+            <td><img src="{{ i.picture}}" /></td>
             <td>{{ i.item_name }}</td>
             <td>{{ i.quantity}}</td>
             <td>$ {{ i.unite_price}}</td>
@@ -138,6 +140,7 @@
           <td>{{item.salePrice * quantity}}</td>
           <td><a class="btn btn-primary btn-sm active"
                  ng-click="list.items.push({
+                   picture: item.thumbnailImage,
                    item_name: item.name,
                    quantity: quantity,
                    unite_price: item.salePrice
