@@ -16,6 +16,7 @@ var ListSchema = new mongoose.Schema({
   //Each item should be follow this structure:
   // {
   //    item_name: String,
+  //    picture: String
   //    quantity:  Number,
   //    unite_price: Number  //this is typo, and too late to change for us.
   // }
