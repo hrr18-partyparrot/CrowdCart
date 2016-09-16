@@ -1,6 +1,6 @@
 angular.module("crowdcart.lists", ["angularMoment"])
 
-.controller("ListsController", function ($scope, Lists, $window, $location, $rootScope, $routeParams, $http) {
+.controller("ListsController", function ($scope, Lists, $window, $location, $rootScope, $routeParams, $http, $resource) {
 
   // storage objs
   $scope.data = {};
@@ -85,10 +85,20 @@ angular.module("crowdcart.lists", ["angularMoment"])
 
   //searches Walmart's API
   $scope.searchItem = function() {
-    console.log(Lists.searchWalmart($scope.itemSearch));
-      // .then(function(results) {
-      //   console.log('walmart results', results);
-      // })
+    var urlSearchProductApi = 'http://api.walmartlabs.com/v1/search';
+    var keyApi = 'fahcgpfschk77ywg9ej8ukfy';
+    console.log('attepmint to contact walmart');
+    var searchRequest = $resource(urlSearchProductApi, {
+        callback: "JSON_CALLBACK"
+      },{
+          get: {
+            method: "JSONP"
+          }
+        });
+    console.log('after first resource');
+    searchRequest.get({apiKey: keyApi, query: $scope.itemSearch}, function(items) {
+      console.log('callback walmart: ', items.items);
+    });
   };
 
   // delete list
