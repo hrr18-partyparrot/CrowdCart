@@ -4,6 +4,7 @@ angular.module("crowdcart", [
   "crowdcart.lists",
   "crowdcart.jobs",
   "crowdcart.services",
+  "crowdcart.checkout",
   "ngRoute",
   "ui.bootstrap"
 ])
@@ -49,7 +50,11 @@ angular.module("crowdcart", [
       // // authentication removed to be sharable link
       // authenticate: true
     })
-
+    .when('/checkout', {
+      templateUrl: 'stripe/checkout.html',
+      controller: 'CheckoutController',
+      authenticate: true
+    })
     .otherwise({
       redirectTo: "/mylists"
     });
