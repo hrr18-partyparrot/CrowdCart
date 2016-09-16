@@ -6,6 +6,7 @@ angular.module("crowdcart", [
   "crowdcart.services",
   "crowdcart.checkout",
   "ngRoute",
+  "ngResource",
   "ui.bootstrap"
 ])
 
