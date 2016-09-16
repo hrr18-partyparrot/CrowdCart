@@ -134,15 +134,17 @@
         <th>Picture</th>
         <th>Item Name</th>
         <th>Price</th>
-        <th>Quantify</th>
+        <th>Quantity</th>
         <th>Total Price</th>
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="item in walmartItems">
+      <tr ng-repeat="item in walmartItems" ng-click=clickedWalmartItem(item.name)>
         <td><img src="{{item.thumbnailImage}}" /></td>
         <td>{{item.name}}</td>
         <td>{{item.salePrice}}</td>
+        <td><input type="number" value=1 ng-model="quantity"></td>
+        <td>{{item.salePrice * quantity}}</td>
       </tr>
     </tbody>
   </table>

@@ -15,6 +15,9 @@ angular.module("crowdcart.lists", ["angularMoment"])
   $scope.city = $window.localStorage.getItem('crowdcartusercity');
   $scope.zip = $window.localStorage.getItem('crowdcartuserzip');
 
+  // default value for quantity of items
+  $scope.quantity = 1;
+
   var initialize = function () {
 
     // if routePararms exists it means listid is in URL
@@ -100,6 +103,11 @@ angular.module("crowdcart.lists", ["angularMoment"])
       console.log('callback walmart: ', response.items);
       $scope.walmartItems = response.items;
     });
+  };
+
+  // test for Walmart item clicked
+  $scope.clickedWalmartItem = function(part) {
+    console.log('item clicked ', part);
   };
 
   // delete list
