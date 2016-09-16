@@ -1,4 +1,5 @@
 <!-- list view for mylist -->
+
 <div class="mylist">
   <h3 class="display-3">
     My Lists
@@ -20,8 +21,8 @@
         <td ng-click="displayDetail(this.list._id)">{{ list.delivery_address.city }}, {{ list.delivery_address.state }}</td>
         <td ng-click="displayDetail(this.list._id)"><span am-time-ago="list.due_at"></span></td>
         <td>
-          <a class="btn btn-primary btn-sm active">Edit</a>
-          <a ng-click="deleteList(this.list._id, $index)" class="btn btn-danger btn-sm active">Delete</a>
+          <a class="btn btn-primary btn-xs active">Edit</a>
+          <a ng-click="deleteList(this.list._id, $index)" class="btn btn-danger btn-xs active">Delete</a>
         </td>
         <td ng-if="!list.deliverer_id">Open</td>
         <td ng-if="!!list.deliverer_id">In Work!</td>
@@ -30,3 +31,5 @@
   </table>
   <div><a href='#/createnewlist' class="btn btn-primary btn-sm active">Add List</a></div>
 </div>
+
+
