@@ -90,7 +90,6 @@ angular.module("crowdcart.lists", ["angularMoment"])
   $scope.searchItem = function() {
     var urlSearchProductApi = 'http://api.walmartlabs.com/v1/search';
     var keyApi = 'fahcgpfschk77ywg9ej8ukfy';
-    console.log('attepmint to contact walmart');
     var searchRequest = $resource(urlSearchProductApi, {
         callback: "JSON_CALLBACK"
       },{
@@ -98,9 +97,7 @@ angular.module("crowdcart.lists", ["angularMoment"])
             method: "JSONP"
           }
         });
-    console.log('after first resource');
     searchRequest.get({apiKey: keyApi, query: $scope.itemSearch}, function(response) {
-      console.log('callback walmart: ', response.items);
       $scope.walmartItems = response.items;
     });
   };
