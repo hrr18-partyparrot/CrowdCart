@@ -136,6 +136,7 @@
         <th>Price</th>
         <th>Quantity</th>
         <th>Total Price</th>
+        <th>Add to List</th>
       </tr>
     </thead>
     <tbody>
@@ -145,6 +146,7 @@
         <td>{{item.salePrice}}</td>
         <td><input type="number" value=1 ng-model="quantity"></td>
         <td>{{item.salePrice * quantity}}</td>
+        <td><a class="btn btn-primary btn-sm active">Add</a></td>
       </tr>
     </tbody>
   </table>
