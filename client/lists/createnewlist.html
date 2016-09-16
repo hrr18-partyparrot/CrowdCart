@@ -140,7 +140,9 @@
     </thead>
     <tbody>
       <tr ng-repeat="item in walmartItems">
-      <td></td>
+        <td><img src="{{item.thumbnailImage}}" /></td>
+        <td>{{item.name}}</td>
+        <td>{{item.salePrice}}</td>
       </tr>
     </tbody>
   </table>
