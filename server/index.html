@@ -28,7 +28,7 @@
         return false;
       });
       socket.on('chat message', function(msg){
-        $('#messages').append($('<li>').text(msg));
+        $('#messages').append($('<li>').text(window.localStorage.crowdcartusername +': ' + msg));
       });
     </script>
   </body>
