@@ -1,14 +1,17 @@
-<!-- sign in page/box -->
-
-<div class="signin-outer">
-  <div class="signin-inner">
-    <form name="signin-form" ng-submit="signin()">
-      <div class="signin-field"><input type="email" ng-model="user.email" placeholder="Email"></div>
-      <div class="signin-field"><input type="password" ng-model="user.password" placeholder="Password"></div>
-      <button>Sign In</button>
+<!-- Sign In -->
+<div style="text-align:center; margin-top:6%" class="container">
+  <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3" style="background-color:#f9f9f9; padding:0">
+    <h3>Sign In</h3>
+    <hr>
+    <form name="signin-form" ng-submit="signin()" style="margin-top:20px">
+      <div class="form-group">
+        <input ng-model="user.email" type="email" style="display:block; width:90%; border: 1px solid #ddd; outline:none; padding:7px; margin:0 auto;" placeholder="Email..">
+      </div>
+      <div class="form-group">
+        <input ng-model="user.password" type="password" style="display:block; width:90%; border: 1px solid #ddd; outline:none; padding:7px; margin:0 auto;" placeholder="Password..">
+      </div>
+      <button style="margin-top:5px; width:100%; border:none; outline:none; padding:16px; background-color:#e6ffcc; font-size:20px" type="submit">Submit</button>
+      <div style="margin-top:15px;"><a href="#/signup">Don't have an account? <strong>Signup</strong>...</a></div>
     </form>
-    <div>
-    <a href="#/signup" style="color: white">Don't have an account? <strong>Signup</strong>...</a>
-    </div>
   </div>
 </div>

@@ -1,29 +1,28 @@
 <!-- list view for mylist -->
-<div class="mylist contents-container">
-  <h3>My Lists</h3>
-  <div ng-if="data.lists.length > 5"><a href='#/createnewlist'>Create New List</a></div>
-    <table class="table table-hover">
-      <thead>
-        <tr class="header">
-          <th>List Name</th>
-          <th>Location</th>
-          <th>Due</th>
-          <th></th>
-          <th>Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="list" ng-repeat="list in data.lists | orderBy:'due_at' | filter:search">
-          <td ng-click="displayDetail(this.list._id)">{{ list.name }}</td>
-          <td ng-click="displayDetail(this.list._id)">{{ list.delivery_address.city }}, {{ list.delivery_address.state }}</td>
-          <td ng-click="displayDetail(this.list._id)"><span am-time-ago="list.due_at"></span></td>
-          <td><a ng-click="deleteList(this.list._id, $index)" class="btn btn-primary btn-sm active">Delete List</a></td>
-          <td ng-if="!list.deliverer_id">Open</td>
-          <td ng-if="!!list.deliverer_id">In Work!</td>
-        </tr>
-      </tbody>
-    </table>
-    <div><a href='#/createnewlist' class="btn btn-primary btn-sm active">Add List</a></div>
-  </div>
-  <!-- <pre>{{ displayList.name }}</pre> -->
+<div class="mylist">
+  <h3 class="display-3">
+    My Lists
+    <span><a href='#/createnewlist' class="btn btn-info pull-right">Add List</a></span>
+  </h3>
+  <table class="table table-hover" style="margin-top:30px">
+    <thead>
+      <tr class="header">
+        <th>List Name</th>
+        <th>Location</th>
+        <th>Due</th>
+        <th>Actions</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="list" ng-repeat="list in data.lists | orderBy:'due_at' | filter:search">
+        <td ng-click="displayDetail(this.list._id)">{{ list.name }}</td>
+        <td ng-click="displayDetail(this.list._id)">{{ list.delivery_address.city }}, {{ list.delivery_address.state }}</td>
+        <td ng-click="displayDetail(this.list._id)"><span am-time-ago="list.due_at"></span></td>
+        <td><a ng-click="deleteList(this.list._id, $index)" class="btn btn-danger btn-sm">Delete List</a></td>
+        <td ng-if="!list.deliverer_id">Open</td>
+        <td ng-if="!!list.deliverer_id">In Work!</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
