@@ -54,7 +54,7 @@ angular.module("crowdcart.lists", ["angularMoment"])
   };
   //redirect to allow the list to be edited
   $scope.editList = function(listid) {
-    $location.path("/editList/")
+    $location.path("/editList/" + listid);
     console.log('edit: ', listid);
   }
 

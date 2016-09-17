@@ -56,7 +56,7 @@ angular.module("crowdcart", [
       controller: 'CheckoutController',
       authenticate: true
     })
-    .when('/editList', {
+    .when('/editList/:listid', {
       templateUrl: 'lists/editList.html',
       controller: 'ListsController',
       authenticate: true
