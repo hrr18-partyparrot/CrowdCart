@@ -56,6 +56,11 @@ angular.module("crowdcart", [
       controller: 'CheckoutController',
       authenticate: true
     })
+    .when('/editList', {
+      templateUrl: 'lists/editList.html',
+      controller: 'ListsController',
+      authenticate: true
+    })
     .otherwise({
       redirectTo: "/signup"
     });

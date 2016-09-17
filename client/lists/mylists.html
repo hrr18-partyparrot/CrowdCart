@@ -21,7 +21,7 @@
         <td ng-click="displayDetail(this.list._id)">{{ list.delivery_address.city }}, {{ list.delivery_address.state }}</td>
         <td ng-click="displayDetail(this.list._id)"><span am-time-ago="list.due_at"></span></td>
         <td>
-          <a class="btn btn-primary btn-xs active">Edit</a>
+          <a ng-click="editList(this.list)" class="btn btn-primary btn-xs active">Edit</a>
           <a ng-click="deleteList(this.list._id, $index)" class="btn btn-danger btn-xs active">Delete</a>
         </td>
         <td ng-if="!list.deliverer_id">Open</td>

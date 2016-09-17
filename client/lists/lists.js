@@ -52,7 +52,11 @@ angular.module("crowdcart.lists", ["angularMoment"])
 
 
   };
-
+  //redirect to allow the list to be edited
+  $scope.editList = function(listid) {
+    $location.path("/editList/")
+    console.log('edit: ', listid);
+  }
 
   //display list detail which uses list detail page
   $scope.displayDetail = function(listid) {
