@@ -21,7 +21,7 @@
         <td>{{item.unite_price}}</td>
         <td>{{item.quantity * item.unite_price}}</td>
         <td>
-          <a class="btn btn-danger btn-xs active">Remove</a>
+          <a ng-click="displayList.items.splice($index, 1)" class="btn btn-danger btn-xs active">Remove</a>
         </td>
       </tr>
     </tbody>
