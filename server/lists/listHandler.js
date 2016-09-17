@@ -14,7 +14,14 @@ module.exports = {
   modifyList: function(req, res) {
     var listId = req.body._id;
     console.log('record if when editing list: ', listId);
-    //List.findById();
+    List.findById(listId, function(err, list) {
+      if (err) {
+        console.log('modifyList Error in listHandler.js');
+        console.error(err);
+      }
+      list.items = req.body.items;
+      list.save();
+    });
   },
 
   // addList method
