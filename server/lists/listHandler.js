@@ -21,6 +21,7 @@ module.exports = {
       }
       list.items = req.body.items;
       list.save();
+      res.json('list has been modified');
     });
   },
 

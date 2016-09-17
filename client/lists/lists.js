@@ -62,7 +62,7 @@ angular.module("crowdcart.lists", ["angularMoment"])
   $scope.modifyList = function() {
     Lists.modifyList($scope.displayList)
       .then(function () {
-        $location.path('/mylist');
+        $location.path('/mylists');
       })
       .catch(function (error) {
         console.log(error);
