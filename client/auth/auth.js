@@ -1,6 +1,7 @@
 angular.module('crowdcart.auth', [])// make an auth module
 
 .controller('AuthController', function ($scope, $window, $location, Auth) {
+  $scope.user = {};
 
   $scope.signin = function () {
     Auth.signin($scope.user)
@@ -21,7 +22,6 @@ angular.module('crowdcart.auth', [])// make an auth module
   };
 
   $scope.signup = function () {
-    $scope.user = {};
     Auth.signup($scope.user)
       .then(function (data) {
         $window.localStorage.setItem('crowdcarttoken', data.token);
