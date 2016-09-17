@@ -33,6 +33,7 @@ module.exports = function(app, express){
   // POST - updateStatus (reflects when jobs/lists are assigned)
   app.post('/api/status', listHandler.updateStatus);
 
+
   //app.get('/api/checkout', stripeHandler.???);
   //app.post('/api/checkout', stripeHandler.payNow);
 
