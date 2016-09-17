@@ -58,6 +58,17 @@ angular.module("crowdcart.lists", ["angularMoment"])
     console.log('edit: ', listid);
   }
 
+  //modify lists
+  $scope.modifyList = function() {
+    Lists.modifyList($scope.displayList)
+      .then(function () {
+        $location.path('/mylist');
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
   //display list detail which uses list detail page
   $scope.displayDetail = function(listid) {
     // simple redirect passing over listid in URL

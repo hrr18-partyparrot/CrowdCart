@@ -32,6 +32,8 @@ module.exports = function(app, express){
   app.post('/api/jobs', listHandler.updateJobStatus);
   // POST - updateStatus (reflects when jobs/lists are assigned)
   app.post('/api/status', listHandler.updateStatus);
+  // PUT - modify the list being edited
+  app.put('/api/modify', listHandler.modifyList);
 
 
   //app.get('/api/checkout', stripeHandler.???);
