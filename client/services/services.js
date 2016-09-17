@@ -133,6 +133,15 @@ angular.module("crowdcart.services",[])
     })
   }
 
+  // Modifies a list
+  var modifyList = function (list) {
+    return $http({
+      method: "PUT",
+      url: "/api/modify",
+      data: list
+    })
+  }
+
   return {
     getLists: getLists,
     getAllList: getAllList,
@@ -141,7 +150,8 @@ angular.module("crowdcart.services",[])
     updateStatus: updateStatus,
     newList: newList,
     updateList: updateList,
-    deleteList: deleteList
+    deleteList: deleteList,
+    modifyList: modifyList
   }
 
 })

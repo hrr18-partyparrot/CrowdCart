@@ -10,6 +10,21 @@ module.exports = {
   // Coordinate with front end on what data
   // should be sent and received.
 
+  // used to edit list
+  modifyList: function(req, res) {
+    var listId = req.body._id;
+    console.log('record if when editing list: ', listId);
+    List.findById(listId, function(err, list) {
+      if (err) {
+        console.log('modifyList Error in listHandler.js');
+        console.error(err);
+      }
+      list.items = req.body.items;
+      list.save();
+      res.json('list has been modified');
+    });
+  },
+
   // addList method
   addList: function(req, res){
     var newListObj = req.body;
