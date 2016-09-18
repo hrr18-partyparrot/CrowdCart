@@ -6,9 +6,11 @@ angular.module('crowdcart.auth', [])// make an auth module
   $scope.signin = function () {
     Auth.signin($scope.user)
       .then(function (data) {
-        console.log(data.address);
+        console.log(data);
         //Save token, user_id and address to local storage
         $window.localStorage.setItem('crowdcarttoken', data.token)
+        $window.localStorage.setItem('crowdcartusername', data.username);
+        $window.localStorage.setItem('crowdcartname', data.name.first + ' ' + data.name.last);
         $window.localStorage.setItem('crowdcartuser', data.userid);
         $window.localStorage.setItem('crowdcartuserstreet', data.address.street);
         $window.localStorage.setItem('crowdcartusercity', data.address.city);

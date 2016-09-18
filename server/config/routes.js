@@ -1,7 +1,6 @@
 // require userHandler, listHandler
 var userHandler = require('../users/userHandler.js');
 var listHandler = require('../lists/listHandler.js');
-var stripeHandler = require('../stripe/stripeHandler.js');
 
 // export function
 module.exports = function(app, express){
@@ -34,9 +33,5 @@ module.exports = function(app, express){
   app.post('/api/status', listHandler.updateStatus);
   // PUT - modify the list being edited
   app.put('/api/modify', listHandler.modifyList);
-
-
-  //app.get('/api/checkout', stripeHandler.???);
-  //app.post('/api/checkout', stripeHandler.payNow);
 
 };

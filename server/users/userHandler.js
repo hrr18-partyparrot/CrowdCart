@@ -12,6 +12,7 @@ module.exports = {
 
   // signin method
   signin: function(req, res){
+    console.log(req,'req');
     var email = req.body.email;
     var password = req.body.password;
 
@@ -33,7 +34,9 @@ module.exports = {
                 token: token, //session token will be set on client side
                 // userid also returned.  This should be assigned to a cookie also so that it is available for future server requests and db queries.
                 userid: user['_id'],
-                address: user['address']
+                address: user['address'],
+                username: user['username'],
+                name: user['name']['first'] + ' ' + user['name']['last']
                 // anything else to send back on success?
               });
             }
@@ -74,5 +77,27 @@ module.exports = {
       }
     });
   }
+  // ,
+
+  // findByID: function(req, res){
+  //   var userID = '';
+  //   var email = req.body.email;
+  //   var newUserObj = req.body
+
+  //   User.findOne({'_id': ObjectID(userID)}, function(err, user){
+  //     if (err) { // notifies if error is thrown
+  //       console.log("mongo findOne signup err: ", err);
+  //       helper.sendError(err, req, res);
+  //     } else {
+  //       if (user) { // notifies if email is already taken
+
+  //         res.json({
+  //           username: user['username'],
+  //           name: user['name']['first'] + ' ' + user['name']['last']
+  //         });
+  //       }
+  //     }
+  //   });
+  // }
 
 };
