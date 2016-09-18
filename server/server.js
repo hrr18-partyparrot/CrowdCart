@@ -27,12 +27,13 @@ io.on('connection', function(socket){
   });
 });
 
+
 http.listen(port, function(){
   console.log('listening on *:3000');
 });
 
 
-//set middleware
+// set middleware
 middleware(app, express);
 
 // set routes
