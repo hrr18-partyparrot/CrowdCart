@@ -1,23 +1,30 @@
 angular.module('crowdcart.auth', [])// make an auth module
 
-.controller('AuthController', function ($scope, $window, $location, Auth) {
+
+.controller('AuthController', function ($scope, $window, $location, Auth, $http) {
   $scope.user = {};
 
+  $http({
+    method: 'GET',
+    url: '/api/signin'
+  })
+  .then(function({ data }) {
+    if (data) {
+      $window.localStorage.setItem('crowdcartuser', data.userid);
+      $window.localStorage.setItem('crowdcartuserstreet', data.address.street);
+      $window.localStorage.setItem('crowdcartusercity', data.address.city);
+      $window.localStorage.setItem('crowdcartuserstate', data.address.state);
+      $window.localStorage.setItem('crowdcartuserzip', data.address.zip_code);
+      $location.path('/mylists');
+    }
+  }); 
+
+
   $scope.signin = function () {
-    Auth.signin($scope.user)
+    $scope.sending = "Sending Email.."
+    Auth.signin($scope.email)
       .then(function (data) {
-        console.log(data);
-        //Save token, user_id and address to local storage
-        $window.localStorage.setItem('crowdcarttoken', data.token)
-        // This has been removed temporarily
-       // $window.localStorage.setItem('crowdcartusername', data.username);
-        $window.localStorage.setItem('crowdcartname', data.name.first);
-        $window.localStorage.setItem('crowdcartuser', data.userid);
-        $window.localStorage.setItem('crowdcartuserstreet', data.address.street);
-        $window.localStorage.setItem('crowdcartusercity', data.address.city);
-        $window.localStorage.setItem('crowdcartuserstate', data.address.state);
-        $window.localStorage.setItem('crowdcartuserzip', data.address.zip_code);
-        $location.path('/mylists');
+        $scope.sending = data;
       })
       .catch(function (error) {
         console.error(error);
@@ -26,11 +33,8 @@ angular.module('crowdcart.auth', [])// make an auth module
 
   $scope.signup = function () {
     Auth.signup($scope.user)
-      .then(function (data) {
-        $window.localStorage.setItem('crowdcarttoken', data.token);
-        // saving username to localstorage
-        $window.localStorage.setItem('crowdcartuser', data.userid);
-        $location.path('/mylists');
+      .then(function () {
+        $location.path('/signin');
       })
       .catch(function (error) {
         console.error(error);
