@@ -112,7 +112,7 @@ module.exports = {
   // getAllLists method
   getAllLists: function(req, res){
     List.find({})
-      .then(function(lists){ // returns array of lists
+      .then(function(lists) { // returns array of lists
         res.json(lists);
       });
   },

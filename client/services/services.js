@@ -5,12 +5,13 @@ angular.module("crowdcart.services",[])
 .factory("Auth", function($http, $location, $window) {
 
   // signin
-  var signin = function(user) {
+  var signin = function(email) {
+
     return $http({
       method: "POST",
-      url: "/api/signin",
+      url: "/sendtoken",
       // clarify on data format
-      data: JSON.stringify(user)
+      data: JSON.stringify({user: email})
     })
     .then(function(res) {
       return res.data
@@ -34,7 +35,7 @@ angular.module("crowdcart.services",[])
   var isAuthenticated = function () {
     // check local to see if token exists
     // going by name crowdcarttoken for time being
-    return !!$window.localStorage.getItem("crowdcarttoken")
+    return !!$window.localStorage.getItem("crowdcartuser")
   }
 
   var signout = function () {
@@ -44,7 +45,10 @@ angular.module("crowdcart.services",[])
     $window.localStorage.removeItem("crowdcartusercity");
     $window.localStorage.removeItem("crowdcartuserstate");
     $window.localStorage.removeItem("crowdcartuserzip");
-    $location.path("/signin")
+    $http({
+      'method': 'GET',
+      'url': '/api/logout'
+    })
   }
 
   return {
