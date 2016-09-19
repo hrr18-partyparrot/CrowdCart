@@ -1,21 +1,59 @@
 <div class="newlist container">
-  <div><h1>Create New List Page</h1></div>
+  <div><h1>Order Details</h1></div>
   <hr />
 
   <!-- ====================================================== -->
   <!-- Order Details -->
    <div>
-     <h3>Order Details</h3>
+
     <!-- inputs here -->
      <form name="addListForm" >
       <h4>List Name</h4>
       <input type="text" ng-model="list.name" placeholder="Descriptive Name">
 
-
-      <span>
+     <!--  This is deprecated as we're using walmart -->
+   <!--    <span>
         <h4>Offer Price</h4>
         <input type="number" ng-model="list.offer_price" placeholder="Offer Price">
-      </span>
+      </span> -->
+
+       <!-- Searching Walmart Temp -->
+  <h3>Select an Item</h3>
+  <form name="walmartSearch">
+    <input type="text" ng-model="itemSearch" placeholder="Type In Item" />
+    <a ng-click="searchItem()" class="btn btn-primary btn-sm active">search for item</a>
+  </form>
+  <!-- Display info from Walmart -->
+  <div class="pre-scrollable">
+    <table class="table table-hover pre-scrollable">
+      <thead>
+        <tr>
+          <th>Picture</th>
+          <th>Item Name</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Total Price</th>
+          <th>Add to List</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="item in walmartItems" ng-click=clickedWalmartItem(item.name)>
+          <td><img src="{{item.thumbnailImage}}" /></td>
+          <td>{{item.name}}</td>
+          <td>{{item.salePrice}}</td>
+          <td><input type="number" value=1 ng-model="quantity"></td>
+          <td>{{item.salePrice * quantity}}</td>
+          <td><a class="btn btn-primary btn-sm active"
+                 ng-click="list.items.push({
+                   picture: item.thumbnailImage,
+                   item_name: item.name,
+                   quantity: quantity,
+                   unite_price: item.salePrice
+                 })">Add</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
       <span>
         <!-- ui-bootstrap date-picker -->
         <style>
@@ -42,8 +80,8 @@
             </p>
           </div>
         </div>
-        <button type="button" class="btn btn-sm btn-info" ng-click="today()">Today</button>
-        <button type="button" class="btn btn-sm btn-danger" ng-click="clear()">Clear</button>
+    <!--     <button type="button" class="btn btn-sm btn-info" ng-click="today()">Today</button>
+        <button type="button" class="btn btn-sm btn-danger" ng-click="clear()">Clear</button> -->
         <span>
           <h4>Due Time</h4>
           <input type="number" ng-model="list.due_hour" min="0" max="23" placeholder="H"> :
@@ -112,42 +150,6 @@
     <a ng-click="addList()" class="btn btn-primary btn-sm active">Submit List</a>
   </form>
 
-    <!-- Searching Walmart Temp -->
-  <h1>Select an Item</h1>
-  <form name="walmartSearch">
-    <input type="text" ng-model="itemSearch" placeholder="Type In Item" />
-    <a ng-click="searchItem()" class="btn btn-primary btn-sm active">search for item</a>
-  </form>
-  <!-- Display info from Walmart -->
-  <div class="pre-scrollable">
-    <table class="table table-hover pre-scrollable">
-      <thead>
-        <tr>
-          <th>Picture</th>
-          <th>Item Name</th>
-          <th>Price</th>
-          <th>Quantity</th>
-          <th>Total Price</th>
-          <th>Add to List</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr ng-repeat="item in walmartItems" ng-click=clickedWalmartItem(item.name)>
-          <td><img src="{{item.thumbnailImage}}" /></td>
-          <td>{{item.name}}</td>
-          <td>{{item.salePrice}}</td>
-          <td><input type="number" value=1 ng-model="quantity"></td>
-          <td>{{item.salePrice * quantity}}</td>
-          <td><a class="btn btn-primary btn-sm active"
-                 ng-click="list.items.push({
-                   picture: item.thumbnailImage,
-                   item_name: item.name,
-                   quantity: quantity,
-                   unite_price: item.salePrice
-                 })">Add</a></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+
 
 </div>
