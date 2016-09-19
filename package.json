@@ -14,10 +14,7 @@
     "browser-sync": "^1.5.7",
     "chai": "^3.4.1",
     "clone-stats": "0.0.1",
-<<<<<<< 0d6730a615ae5282100111c3a26076f573de1879
     "cookie-parser": "^1.4.3",
-=======
->>>>>>> started to add emailjs to file
     "emailjs": "^1.0.8",
     "express": "^4.4.5",
     "express-session": "^1.14.1",
