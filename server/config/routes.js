@@ -12,7 +12,8 @@ module.exports = function(app, express){
 
   // POST - signup
   app.post('/api/signup', userHandler.signup);
-
+  // POST - JobStatus to buyer
+  app.post('/api/addJobStatus', listHandler.addJobStatus);
   // POST - addList
   app.post('/api/lists', listHandler.addList);
 

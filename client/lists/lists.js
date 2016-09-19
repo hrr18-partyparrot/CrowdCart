@@ -139,6 +139,7 @@ angular.module("crowdcart.lists", ["angularMoment"])
     // Update DB list with new deliverer_id
     Lists.updateList(list)
       .then(function () {
+        Lists.addJobStatus(list);
         console.log("add job", list)
         $location.path('/myjobs');
       })

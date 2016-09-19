@@ -127,6 +127,36 @@ module.exports = {
       });
   },
 
+  //to send job status to buyer via email
+  addJobStatus: function(req, res) {
+    var list = req.body;
+    var creator_id = req.body.creator_id;
+    var deliverer_id = req.body.deliverer_id;
+    var creatorEmail, delivererName;
+    console.log(list);
+    User.findOne({'_id': creator_id}, function(err, creator) {
+      if (err) { // notifies if error is thrown
+        console.log("mongo findOne list err: ", err);
+      } else {
+        creatorEmail = creator.email;
+        creatorName = creator.name.first
+        User.findOne({'_id': deliverer_id}, function(err, deliverer) {
+          if (err) {
+            console.log("Error finding deliverer in addJobStatus");
+          } else {
+            delivererName = deliverer.name.first + " " + deliverer.name.last;
+            smtpServer.send({
+              from:    "Crowd Cart Operations <contact.crowdcart@gmail.com>",
+              to:      "<" + creatorEmail + ">",
+              subject: "Job Status",
+              text:    "Hi " + creatorName + ",\nThis is to status message to inform you that your list has been picked up by " + delivererName + "."
+            }, function(err, message) { console.log(err || message); });
+          }
+        })
+      }
+    })
+  },
+
   // updateJobStatus method (corrected version)
   updateJobStatus: function(req, res){
     // TODO: Fill Out
