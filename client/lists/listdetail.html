@@ -1,7 +1,22 @@
 <!-- individual list item with details -->
 <div class="listdetail container">
   <!-- header has name, offer price and due_at -->
-  <h2 class="detail-header"><span>{{ displayList.name }}</span><span>${{ displayList.offer_price }}</span><span>Due <span am-time-ago="displayList.due_at"></span></span></h2>
+  <h2 class="detail-header"><span>{{ displayList.name }}</span><span>${{ displayList.offer_price }}</span><span>Due <span am-time-ago="displayList.due_at"></span></span>
+  <span><a class="pull-right">
+      <form action="/your-charge-code" method="POST">
+        <script
+          src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="pk_test_6bLZOpp3h5KaUKbCIW74153T"
+          data-amount="999"
+          data-name="busbyActual"
+          data-description="Widget"
+          data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+          data-locale="auto">
+        </script>
+      </form>
+      </a></span>
+
+  </h2>
 
   <div class="delivery-address">
     <!-- ui-bootstrap expandable accordion -->
