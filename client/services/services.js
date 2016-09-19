@@ -62,6 +62,15 @@ angular.module("crowdcart.services",[])
 })
 
 .factory("Lists", function($http) {
+  // used to send buyer a status if job was taken
+  var addJobStatus = function(list) {
+    console.log('Im inside the add status factor!!!!');
+    $http({
+      method: "POST",
+      url: "/api/addJobStatus",
+      data: list
+    })
+  }
 
   // get all lists for specific user; since with routing to decide if that's the right meaning
   var getLists = function (id) {
@@ -155,7 +164,8 @@ angular.module("crowdcart.services",[])
     newList: newList,
     updateList: updateList,
     deleteList: deleteList,
-    modifyList: modifyList
+    modifyList: modifyList,
+    addJobStatus: addJobStatus
   }
 
 })
