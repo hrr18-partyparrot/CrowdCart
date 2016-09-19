@@ -55,14 +55,13 @@ module.exports = {
 
    // updateList method
   updateList: function(req, res){
+    console.log('----incoming request body: ', req.body);
     var id = req.body.creator_id;
     var due_at = req.body.due_at;
     var name = req.body.name;
-
+    var creator_id = req.body.creator_id;
     // var conditions = {'creator_id': id, 'due_at': due_at, 'name': name, 'deliverer_id': ''};
     // var update = {'deliverer_id': req.body.deliverer_id};
-
-    // List.update(conditions, update)
 
     List.findOne({'creator_id': id, 'due_at': due_at, 'name': name}, function(err, list){
           if (err) {
@@ -75,6 +74,45 @@ module.exports = {
         }
     );
 
+  },
+
+  addCancelStatus: function(req, res) {
+    console.log('----incoming request body: ', req.body);
+    var id = req.body.creator_id;
+    var due_at = req.body.due_at;
+    var name = req.body.name;
+    var creator_id = req.body.creator_id;
+    var deliverer_id = req.body.deliverer_id;
+    var prevDeliverer_id = req.body.prevDeliverer_id;
+
+    // var conditions = {'creator_id': id, 'due_at': due_at, 'name': name, 'deliverer_id': ''};
+    // var update = {'deliverer_id': req.body.deliverer_id};
+
+    // List.update(conditions, update)
+    console.log('----------- In update List ----------');
+    User.findOne({'_id': creator_id}, function(err, creator) {
+      if (err) { // notifies if error is thrown
+        console.log("mongo findOne user err: ", err);
+      } else {
+        creatorEmail = creator.email;
+        creatorName = creator.name.first
+        User.findOne({'_id': prevDeliverer_id}, function(err, deliverer) {
+          if (err) {
+            console.log("Error finding deliverer in updateList");
+          } else {
+            console.log('----------- About to send email ----------');
+            delivererName = deliverer.name.first + " " + deliverer.name.last;
+            smtpServer.send({
+              from:    "Crowd Cart Operations <" + yourEmail + ">",
+              to:      "<" + creatorEmail + ">",
+              subject: "Job Status",
+              text:    "Hi " + creatorName + ",\nThis is a status message to inform you that " + delivererName +
+              " will no longer be fulfilling your job.\nYour list is back on the open market"
+            }, function(err, message) { console.log(err || message); });
+          }
+        })
+      }
+    })
   },
 
   // deleteList method
