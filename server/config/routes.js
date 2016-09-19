@@ -14,6 +14,9 @@ module.exports = function(app, express){
   app.post('/api/signup', userHandler.signup);
   // POST - JobStatus to buyer
   app.post('/api/addJobStatus', listHandler.addJobStatus);
+
+  // POST - Sends a Cancel status to the buyer
+  app.post('/api/addCancelStatus', listHandler.addCancelStatus);
   // POST - addList
   app.post('/api/lists', listHandler.addList);
 

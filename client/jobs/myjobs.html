@@ -17,7 +17,7 @@
         <td ng-click="displayJobDetail(this.job._id)">{{ job.name }}</td>
         <td ng-click="displayJobDetail(this.job._id)">{{ job.delivery_address.city }}, {{ job.delivery_address.state }}</td>
         <td ng-click="displayJobDetail(this.job._id)"><span am-time-ago="job.due_at"></span></td>
-        <td><a ng-click="deleteJob(job); getJobs();" class="btn btn-primary btn-sm active">Delete Job</a></td>
+        <td><a ng-click="deleteJob(job); getJobs();" class="btn btn-warning btn-xs active">Cancel Job</a><a class="btn btn-success btn-xs active">Complete Job</a></td>
       </tr>
     </tbody>
   </table>

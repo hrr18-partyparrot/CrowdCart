@@ -170,6 +170,14 @@ angular.module("crowdcart.services",[])
 
 })
 .factory("Jobs", function($http) {
+  var addCancelStatus = function(list) {
+    console.log('Im inside the cancel status factor!!!!');
+    $http({
+      method: "POST",
+      url: "/api/addCancelStatus",
+      data: list
+    })
+  }
 
   // get all jobs for specific user
   var getJobs = function (id) {
@@ -205,7 +213,8 @@ angular.module("crowdcart.services",[])
   return {
     getJobs: getJobs,
     updateJobStatus: updateJobStatus,
-    deleteJob: deleteJob
+    deleteJob: deleteJob,
+    addCancelStatus: addCancelStatus
   }
 
 })
