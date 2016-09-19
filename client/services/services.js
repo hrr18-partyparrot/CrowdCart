@@ -7,10 +7,10 @@ angular.module("crowdcart.services",[])
   // signin
   var signin = function(email) {
 
+    //return is used to check when it finishes sending the mail
     return $http({
       method: "POST",
       url: "/sendtoken",
-      // clarify on data format
       data: JSON.stringify({user: email})
     })
     .then(function(res) {
@@ -33,8 +33,8 @@ angular.module("crowdcart.services",[])
   }
 
   var isAuthenticated = function () {
-    // check local to see if token exists
-    // going by name crowdcarttoken for time being
+    // check local to see if passwordless has authenticated the user
+    // by teh existence of crowdcartuser
     return !!$window.localStorage.getItem("crowdcartuser")
   }
 
