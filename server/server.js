@@ -42,7 +42,7 @@ function handleChoosingUsername(socket){
     clients[ind] = socket;
     usernames[socket.id] = nick;
     cb(null);
-    io.sockets.emit('new user', {id: ind, nick: nick});
+    io.emit('new user', {id: ind, nick: nick});
   });
 }
 
