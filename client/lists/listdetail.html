@@ -3,7 +3,7 @@
   <!-- header has name, offer price and due_at -->
   <h2 class="detail-header"><span>{{ displayList.name }}</span><span>${{totalList | number : 2 }}</span><span>Due <span am-time-ago="displayList.due_at"></span></span>
   <span><a class="pull-right">
-      <form id='paid' action="/your-charge-code" method="POST">
+      <form id='paid'>
         <script
           src="https://checkout.stripe.com/checkout.js" class="stripe-button"
           data-key="pk_test_6bLZOpp3h5KaUKbCIW74153T"
