@@ -171,10 +171,17 @@ angular.module("crowdcart.services",[])
 })
 .factory("Jobs", function($http) {
   var addCancelStatus = function(list) {
-    console.log('Im inside the cancel status factor!!!!');
     $http({
       method: "POST",
       url: "/api/addCancelStatus",
+      data: list
+    })
+  }
+
+  var addCompleteStatus = function(list) {
+    $http({
+      method: "POST",
+      url: "/api/addCompleteStatus",
       data: list
     })
   }
