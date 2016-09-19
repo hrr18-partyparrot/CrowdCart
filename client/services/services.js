@@ -221,7 +221,8 @@ angular.module("crowdcart.services",[])
     getJobs: getJobs,
     updateJobStatus: updateJobStatus,
     deleteJob: deleteJob,
-    addCancelStatus: addCancelStatus
+    addCancelStatus: addCancelStatus,
+    addCompleteStatus: addCompleteStatus
   }
 
 })
