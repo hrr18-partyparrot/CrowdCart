@@ -146,6 +146,7 @@ module.exports = {
     var creator_id = req.body.creator_id;
     var deliverer_id = req.body.deliverer_id;
     var creatorEmail, delivererName;
+    var listName = req.body.name;
     console.log(list);
     User.findOne({'_id': creator_id}, function(err, creator) {
       if (err) { // notifies if error is thrown
@@ -162,7 +163,7 @@ module.exports = {
               from:    "Crowd Cart Operations <contact.crowdcart@gmail.com>",
               to:      "<" + creatorEmail + ">",
               subject: "Job Status",
-              text:    "Hi " + creatorName + ",\nThis is to status message to inform you that your list has been picked up by " + delivererName + "."
+              text:    "Hi " + creatorName + ",\nThis is to status message to inform you that your list \"" + listName + "\" has been picked up by " + delivererName + "."
             }, function(err, message) { console.log(err || message); });
           }
         })
