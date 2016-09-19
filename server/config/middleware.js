@@ -19,7 +19,7 @@ var smtpServer  = email.server.connect({
 });
 
 // TODO: Path to be send via email
-var host = 'http://localhost:1337';
+var host = 'http://ec2-52-78-164-167.ap-northeast-2.compute.amazonaws.com:1337';
 
 // Setup of Passwordless
 passwordless.init(new MongoStore('mongodb://localhost/crowdcart'));
