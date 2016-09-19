@@ -3,6 +3,19 @@ var helper = require('../config/helpers.js');
 var User = require('../users/userModel.js');
 var List = require('./listModel.js');
 
+// required for emailjs to work
+var email   = require("emailjs");
+// TODO: email setup (has to be changed)
+var yourEmail = 'contact.crowdcart@gmail.com';
+var yourPwd = 'crowdcart123';
+var yourSmtp = 'smtp.gmail.com';
+var smtpServer  = email.server.connect({
+   user:    yourEmail,
+   password: yourPwd,
+   host:    yourSmtp,
+   ssl:     true
+});
+
 // export function
 module.exports = {
 
