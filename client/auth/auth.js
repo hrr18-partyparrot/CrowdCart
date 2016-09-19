@@ -16,7 +16,6 @@ angular.module('crowdcart.auth', [])// make an auth module
       $window.localStorage.setItem('crowdcartusercity', data.address.city);
       $window.localStorage.setItem('crowdcartuserstate', data.address.state);
       $window.localStorage.setItem('crowdcartuserzip', data.address.zip_code);
-      console.log($window.localStorage.getItem('crowdcartusername'))
       $location.path('/mylists');
     }
   }); 
