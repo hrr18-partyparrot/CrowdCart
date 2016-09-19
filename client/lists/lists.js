@@ -25,7 +25,13 @@ angular.module("crowdcart.lists", ["angularMoment"])
       // get list data and store on scope
       Lists.getOneList($routeParams.listid)
         .then(function (list) {
+          var total = 0;
+          for (var i = 0; i < list.items.length; i ++){
+            total += (list.items[i].quantity * list.items[i].unite_price);
+          }
           $scope.displayList = list
+          $scope.totalList = total;
+
         })
     }
 

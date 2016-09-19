@@ -18,8 +18,8 @@
         <td><img src="{{item.picture}}" /></td>
         <td>{{item.item_name}}</td>
         <td><input type="number" value={{item.quantity}} ng-model="item.quantity"></input></td>
-        <td>{{item.unite_price}}</td>
-        <td>{{item.quantity * item.unite_price}}</td>
+        <td>{{item.unite_price | number : 2}}</td>
+        <td>{{(item.quantity * item.unite_price) | number : 2}}</td>
         <td>
           <a ng-click="displayList.items.splice($index, 1)" class="btn btn-danger btn-xs active">Remove</a>
         </td>
