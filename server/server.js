@@ -6,7 +6,11 @@ var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var mongoose = require('mongoose');
-
+// maps socket.id to user's nickname
+var usernames = {};
+// list of socket ids
+var clients = [];
+var namesUsed = [];
 // set mongoURI
 var mongoURI = process.env.MONGODB_URI || 'mongodb://localhost/crowdcart';
 
@@ -22,11 +26,25 @@ app.get('/livechat', function(req, res){
 });
 
 io.on('connection', function(socket){
+  handleChoosingUsername(socket);
   socket.on('chat message', function(msg){
     io.emit('chat message', msg);
   });
 });
 
+function handleChoosingUsername(socket){
+  socket.on('choose username', function(nick, cb) {
+    if (namesUsed.indexOf(nick) !== -1) {
+      cb('That name is already taken!  Please choose another one.');
+      return;
+    }
+    var ind = namesUsed.push(nick) - 1;
+    clients[ind] = socket;
+    usernames[socket.id] = nick;
+    cb(null);
+    io.sockets.emit('new user', {id: ind, nick: nick});
+  });
+}
 
 http.listen(port, function(){
   console.log('listening on port 1337');

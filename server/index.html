@@ -11,13 +11,24 @@
       #messages { list-style-type: none; margin: 0; padding: 0; }
       #messages li { padding: 5px 10px; }
       #messages li:nth-child(odd) { background: #eee; }
+      #nickname {width: 20em;}
     </style>
   </head>
   <body>
-    <ul id="messages"></ul>
+  <div class="container" id="nickname-container">
+        <h1>Choose a nickname!</h1>
+        <span id="nick-error"></span>
+        <form id="choose-nickname">
+            <input type="text" id="nickname"></input>
+        </form>
+    </div>
+
+    <div class="row" id="messages">
     <form action="">
       <input id="m" autocomplete="off" /><button>Send</button>
     </form>
+    </div>
+
     <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
@@ -28,8 +39,22 @@
         return false;
       });
       socket.on('chat message', function(msg){
-        $('#messages').append($('<li>').text(window.localStorage.crowdcartname +': ' + msg));
+        $('#messages').append($('<li>').text(msg));
       });
+
+    $('#choose-nickname').submit(function(e){
+    e.preventDefault();
+    var nick = $('#nickname').val();
+    socket.emit('choose nickname', nick, function(err){
+      if (err) {
+        $('#nick-error').text(err);
+        $('#nickname').val('');
+      } else {
+        $('#nickname-container').hide();
+        $('#chat-container').show();
+      }
+    });
+  });
     </script>
   </body>
 </html>
