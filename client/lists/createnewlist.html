@@ -12,17 +12,17 @@
       <input type="text" ng-model="list.name" placeholder="Descriptive Name">
 
 
-<!--
+<!-- Commenting out because we're not using this feature anymore.
       <span>
         <h4>Offer Price</h4>
         <input type="number" ng-model="list.offer_price" placeholder="Offer Price">
       </span> -->
 
         <!-- Searching Walmart Temp -->
-  <h1>Select an Item</h1>
+  <h4>Item Name</h4>
   <form name="walmartSearch">
     <input type="text" ng-model="itemSearch" placeholder="Type In Item" />
-    <a ng-click="searchItem()" class="btn btn-primary btn-sm active">search for item</a>
+    <a ng-click="searchItem()" class="btn btn-primary btn-sm active">Search</a>
   </form>
   <!-- Display info from Walmart -->
   <div class="pre-scrollable">
@@ -56,6 +56,13 @@
     </table>
   </div>
       <span>
+       <div class="col-md-3">
+            <span>
+            <h4>Due Time</h4>
+            <input type="number" ng-model="list.due_hour" min="0" max="23" placeholder="H"> :
+            <input type="number" ng-model="list.due_minute" min="0" max="59" placeholder="M">
+            </span>
+          </div>
         <!-- ui-bootstrap date-picker -->
         <style>
           .full button span {
@@ -72,7 +79,7 @@
       <div ng-controller="DatepickerPopupDemoCtrl">
         <h4>Due Date</h4>
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-3">
             <p class="input-group">
               <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="list.due_at" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
               <span class="input-group-btn">
@@ -80,14 +87,14 @@
               </span>
             </p>
           </div>
+
         </div>
-        <button type="button" class="btn btn-sm btn-info" ng-click="today()">Today</button>
-        <button type="button" class="btn btn-sm btn-danger" ng-click="clear()">Clear</button>
-        <span>
-          <h4>Due Time</h4>
-          <input type="number" ng-model="list.due_hour" min="0" max="23" placeholder="H"> :
-          <input type="number" ng-model="list.due_minute" min="0" max="59" placeholder="M">
-        </span>
+
+
+<!--         Commenting out because buttons don't work. -->
+   <!--      <button type="button" class="btn btn-sm btn-info" ng-click="today()">Today</button>
+        <button type="button" class="btn btn-sm btn-danger" ng-click="clear()">Clear</button> -->
+
       </div>
         <!-- end of ui-bootstrap date-picker -->
       </span>
@@ -98,7 +105,8 @@
    <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
    <!-- Deliver Details -->
     <div>
-      <h3>Delivery Details</h3>
+      <h1>Delivery Details</h1>
+       <hr />
       <h4>Delivery Address</h4>
       <div ng-init="isNewAdd=true; isDefaultAdd=false">
         <a ng-show="isNewAdd" ng-click="isNewAdd=!isNewAdd; isDefaultAdd = ! isDefaultAdd" class="btn btn-primary btn-sm active">Use My Default Address</a>
