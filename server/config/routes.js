@@ -17,6 +17,8 @@ module.exports = function(app, express){
 
   // POST - Sends a Cancel status to the buyer
   app.post('/api/addCancelStatus', listHandler.addCancelStatus);
+  // POST - Sends a Complete status to the buyer
+  app.post('/api/addCompleteStatus', listHandler.addCompleteStatus);
   // POST - addList
   app.post('/api/lists', listHandler.addList);
 

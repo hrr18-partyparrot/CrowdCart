@@ -29,7 +29,6 @@ angular.module("crowdcart.jobs", [])
   //redirect to all lists page when there is no job left
 
   $scope.deleteJob = function(list) {
-    console.log('deleteJob ----: ', list.deliverer_id);
     list['prevDeliverer_id'] = list.deliverer_id
     list.deliverer_id = '';
     Lists.updateList(list)
@@ -45,6 +44,24 @@ angular.module("crowdcart.jobs", [])
         console.log(error);
       });
   }
+
+  $scope.completeJob = function(list) {
+    list['prevDeliverer_id'] = list.deliverer_id
+    list.deliverer_id = '';
+    Lists.updateList(list)
+      .then(function () {
+        Jobs.addCompleteStatus(list);
+        $scope.getJobs();
+         if ($scope.data.jobs.length === 1) {
+            $location.path('/alllists');
+         }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
+
 
   // Initialize Get Jobs Once
   $scope.getJobs();
