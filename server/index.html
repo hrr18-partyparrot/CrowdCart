@@ -5,35 +5,43 @@
     <style>
       * { margin: 0; padding: 0; box-sizing: border-box; }
       body { font: 13px Helvetica, Arial; }
-      form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
-      form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
-      form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
+      #chat-form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 40%; }
+      #chat-form-input { border: 0; padding: 10px; width: 50%; margin-right: .5%; }
+      #chat-form-button { width: 20%; background: rgb(130, 224, 255); border: none; padding: 10px; }
       #messages { list-style-type: none; margin: 0; padding: 0; }
       #messages li { padding: 5px 10px; }
       #messages li:nth-child(odd) { background: #eee; }
-      #nickname {width: 20em;}
+      #username {width: 20em;}
     </style>
   </head>
   <body>
-  <div class="container" id="nickname-container">
-        <h1>Choose a nickname!</h1>
+  <div class="container" id="username-container">
+        <h1>Choose a Username!</h1>
         <span id="nick-error"></span>
-        <form id="choose-nickname">
-            <input type="text" id="nickname"></input>
+        <form id="choose-username">
+            <input type="text" id="username"></input>
         </form>
     </div>
-
+ <div class="container" id="chat-container">
+        <div class="row">
+            <div class="clearfix visible-xs"></div>
+            <div class="col-md-4" id="chat-col">
+                <div class="row" id="chat">
+                </div>
     <div class="row" id="messages">
-    <form action="">
-      <input id="m" autocomplete="off" /><button>Send</button>
+    <form action="" id="chat-form">
+      <input id="m" autocomplete="off"  /><button id="chat-form-button">Send</button>
     </form>
     </div>
+  </div>
+  </div>
+  </div>
 
     <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
       var socket = io();
-      $('form').submit(function(){
+      $('#chat-form').submit(function(){
         socket.emit('chat message', $('#m').val());
         $('#m').val('');
         return false;
@@ -42,19 +50,27 @@
         $('#messages').append($('<li>').text(msg));
       });
 
-    $('#choose-nickname').submit(function(e){
+    $('#choose-username').submit(function(e){
     e.preventDefault();
-    var nick = $('#nickname').val();
-    socket.emit('choose nickname', nick, function(err){
+    var nick = $('#username').val();
+    socket.emit('choose username', nick, function(err){
       if (err) {
         $('#nick-error').text(err);
-        $('#nickname').val('');
+        $('#username').val('');
       } else {
-        $('#nickname-container').hide();
+        $('#username-container').hide();
         $('#chat-container').show();
       }
     });
   });
+    socket.on('messages', function(data){
+      displayMsg(data.msg, data.nick)
+    });
+
+      function displayMsg(msg, nick){
+      var html = "<span class='messages'><strong>" + nick + ":</strong> " + msg;
+      $('#chat-form').append(html);
+    }
     </script>
   </body>
 </html>
