@@ -4,9 +4,9 @@
 
 ## Team
 
-  - __Product Owner__: Ryan Busby
+  - __Product Owner__: Tyler Predale
   - __Scrum Master__: John Smalley
-  - __Development Team Members__: Tyler Predale,, Yasser Mahmud, Hoon Bae
+  - __Development Team Members__: Ryan Busby, Yasser Mahmud, Hoon Bae
 
 ## Table of Contents
 
