@@ -4,9 +4,9 @@
 
 ## Team
 
-  - __Product Owner__: Ali Bhatti
-  - __Scrum Master__: Henry Yang
-  - __Development Team Members__: Daniel Chang, Kyle Van Vleck
+  - __Product Owner__: Ryan Busby
+  - __Scrum Master__: John Smalley
+  - __Development Team Members__: Tyler Predale,, Yasser Mahmud, Hoon Bae
 
 ## Table of Contents
 
@@ -58,9 +58,7 @@ npm install
 ```
 
 ### Tasks
-
-View the waffle.io issue [here](https://waffle.io/Dancing-Penguin/Dancing-Penguin)
-View the project planning docs [here](https://docs.google.com/spreadsheets/d/17VOjBqNdDPgaP92LqQ3HTSedvwyuyb4FPGGdkN2sSXo/edit#gid=454523850)
+ - Add project planning docs
 
 
 ## Contributing
