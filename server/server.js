@@ -12,13 +12,13 @@ var usernames = {};
 var clients = [];
 var namesUsed = [];
 // set mongoURI
-var mongoURI = process.env.MONGODB_URI || 'mongodb://localhost/crowdcart';
+var mongoURI = 'mongodb://localhost/crowdcart';
 
 // connect db
 mongoose.connect(mongoURI);
 
 // set port
-var port = process.env.PORT || 1337;
+var port = 80;
 
 
 app.get('/livechat', function(req, res){
